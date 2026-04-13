@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>希臘神話 - 歷史隨筆</title>
+    <style>
+        :root {
+            /* 復古配色 */
+            --bg-paper: #f2e8d5;
+            --text-ink: #2c1e1a;
+            --accent-gold: #b08d57;
+            /* 閱讀器配色 */
+            --bg-reader: #1a1a1a;
+            --bg-page: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-paper);
+            color: var(--text-ink);
+            font-family: "Georgia", "Songti TC", "serif";
+            transition: background-color 0.4s ease;
+        }
+
+        .hidden { display: none !important; }
+
+        /* --- 網誌首頁 --- */
+        .blog-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 2px double var(--text-ink);
+            margin-bottom: 50px;
+            padding-bottom: 20px;
+        }
+
+        /* 封面圖區域 */
+        .main-cover {
+            width: 100%;
+            border: 8px solid #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .main-cover:hover { transform: scale(1.01); }
+
+        .intro-text {
+            line-height: 1.8;
+            font-size: 1.1em;
+            background: rgba(255,255,255,0.4);
+            padding: 30px;
+            border-radius: 4px;
+        }
+
+        .btn-read {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: var(--text-ink);
+            color: var(--bg-paper);
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            letter-spacing: 2px;
+        }
+
+        /* --- 電子閱讀器 --- */
+        #ebook-reader {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--bg-reader);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .reader-box {
+            width: 450px;
+            height: 680px;
+            background: var(--bg-page);
+            padding: 50px;
+            box-sizing: border-box;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 24px; cursor: pointer; color: #999;
+        }
+
+        .content-area { flex-grow: 1; overflow-y: auto; }
+        .page { display: none; line-height: 1.8; }
+        .page.active { display: block; animation: fadeIn 0.5s; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        h2 { border-bottom: 1px solid var(--accent-gold); padding-bottom: 10px; color: #444; }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        .nav-btn {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            background: #fff;
+            cursor: pointer;
+        }
+        .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+    </style>
+</head>
+<body>
+
+<div id="blog-home" class="blog-container">
+    <header>
+        <h1>希臘神話：歷史隨筆</h1>
+    </header>
+
+    <img src="圖檔.png" alt="雷霆之主的權力之路" class="main-cover" onclick="openEbook()">
+
+    <div class="intro-text">
+        <p>在希臘神話的宏大敘事中，宙斯不僅是奧林帕斯山的統治者，更是秩序與正義的維護者。他的崛起是一場慘烈的代際戰爭，他如何用雷霆建立起天界的絕對秩序？</p>
+        <button class="btn-read" onclick="openEbook()">開始閱讀電子書</button>
+    </div>
+</div>
+
+<div id="ebook-reader" class="hidden">
+    <div class="reader-box">
+        <span class="close-btn" onclick="closeEbook()">&times;</span>
+        
+        <div class="content-area">
+            <div class="page active" id="p1">
+                <h2>第一章：克洛諾斯之戰</h2>
+                <p>宙斯（Zeus）的崛起並非順遂。他的父親克洛諾斯（Cronus）為了防止被子女推翻，將出生後的孩子一一吞噬。這象徵著原始權威無情的自我保護，而宙斯則是這個殘酷循環的打破者。</p>
+                <p>成年後的宙斯展開了長達十年的「泰坦戰爭」，並與獨眼巨人結盟。獨眼巨人為他鍛造了「雷霆」，標誌著奧林帕斯理性秩序取代了舊有的混亂。</p>
+            </div>
+
+            <div class="page" id="p2">
+                <h2>第二章：神聖化身與城邦政治</h2>
+                <p>宙斯常以多變的形象降臨人間。如果我們跳脫文學層面，這些「化身故事」背後隱含著深層的政治意涵。古希臘各個城邦往往試圖將家族血緣與神王聯繫起來，這是一種神格化的政治宣傳。</p>
+                <p>最著名的例子是宙斯化身為白公牛，誘走了公主歐羅巴（Europa）。這段旅程後來被定格，而他們抵達的土地，便以「歐羅巴」為名。</p>
+            </div>
+
+            <div class="page" id="p3">
+                <h2>第三章：聖火的懲罰</h2>
+                <p>普羅米修斯（Prometheus）偷取聖火交付給凡人，引發了宙斯的震怒。對於宙斯而言，秩序建立在「神凡有別」的基礎上。</p>
+                <p>他將普羅米修斯鎖在高加索山上受難，反映了宙斯對文明邊界的嚴格把控：人類必須學會尊重神設定的絕對界限。</p>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="nav-btn" id="prevBtn" onclick="movePage(-1)" disabled>上一頁</button>
+            <span id="pageInfo">1 / 3</span>
+            <button class="nav-btn" id="nextBtn" onclick="movePage(1)">下一頁</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let currentPage = 1;
+    const totalPages = 3;
+
+    function openEbook() {
+        document.getElementById('blog-home').classList.add('hidden');
+        document.getElementById('ebook-reader').classList.remove('hidden');
+        document.body.style.backgroundColor = "#1a1a1a";
+    }
+
+    function closeEbook() {
+        document.getElementById('ebook-reader').classList.add('hidden');
+        document.getElementById('blog-home').classList.remove('hidden');
+        document.body.style.backgroundColor = "#f2e8d5";
+    }
+
+    function movePage(step) {
+        document.getElementById('p' + currentPage).classList.remove('active');
+        currentPage += step;
+        document.getElementById('p' + currentPage).classList.add('active');
+        
+        document.getElementById('pageInfo').innerText = currentPage + ' / ' + totalPages;
+        document.getElementById('prevBtn').disabled = (currentPage === 1);
+        document.getElementById('nextBtn').disabled = (currentPage === totalPages);
+    }
+</script>
+
+</body>
+</html>
